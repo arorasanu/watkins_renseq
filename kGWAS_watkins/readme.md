@@ -64,7 +64,7 @@ python anchor.py -a accession_nlr.fasta -m mapping.txt -o accession_nlr.anchored
 Run the following command for each chunk of the _k_-mer matrix:
 
 ```
-python RunAssociation_GLM.py -i presenceMatrix.txt.gz -hd presenceMatrix_header.txt -a nlr_assembly.fasta -p phenotype.txt -s snp.tsv  -u usable.txt -o output.txt
+python RunAssociation_GLM.py -i presenceMatrix.txt.gz -hd presenceMatrix_header.txt -a nlr_assembly.fasta -p phenotype.txt -s snp.tsv  -u usable.txt -o output.txt -c 0.1 -pv 2
 ```
 
 Put all the resultant outputs in a directory and merge them using the following command:
@@ -96,16 +96,16 @@ Install [Jellyfish](https://github.com/gmarcais/Jellyfish) version 2.2.6 or abov
 
 ### Python 3 and above
 
-The code has been tested in Python 3.5.3. 
+The code has been tested in Python 3.6.13. 
 
 The following Python modules are required for GWAS:
 
-* `numpy` (tested with v1.17.4 and v1.18.5)
-* `pandas` (tested with v0.23.0 and v1.0.5)
-* `Biopython` (tested with v1.72 and v1.77): to parse assembly file
-* `scikit-learn` (tested with v0.19.1 and v0.23.1): to compute PCA from SNP markers matrix
-* `statsmodels` (tested with v0.9.0. For the more recent versions of `statsmodels`, you might have to change the import statement in `KmerProjection_GLM.py` from `import statsmodels.formula.api as smf` to `import statsmodels.api as smf`): for regression analysis
-* `bitarray` (tested with v0.8.1 and v1.4.0)
+* `numpy` (tested with v1.17.0)
+* `pandas` (tested with v0.23.0)
+* `Biopython` (tested with v1.78): to parse assembly file
+* `scikit-learn` (tested with v0.24.2): to compute PCA from SNP markers matrix
+* `statsmodels` (tested with v0.12.2): for regression analysis
+* `bitarray` (tested with v2.3.0)
 * `matplotlib` (tested with v3.3.0): for plotting
 
 
@@ -118,7 +118,7 @@ Parameter (long version)| Parameter (short version) | Argument | Description
 --assembly | -a | assembly.fasta | Mandatory. The path to split reference assembly onto which k-mers are mapped for plotting.
 --phenotype | -p | phenotype.txt | Mandatory. The path to phenotype file.
 --usable | -u | usable.txt | Optional. The path to file containing the list of usable accessions.
---stackman | -st | snp.txt | Mandatory. The path to file containing matrix of SNP markers to compute PCA and correct for population structure.
+--snp | -s | snp.txt | Mandatory. The path to file containing matrix of SNP or _k_-mer markers to compute PCA and correct for population structure.
 --subsample | -sub | integer | Optional. Run association analysis by taking a random subsample of _this size_ from the given accessions.
 --permute | -per |  | Optional. Permute the phenotype scores.
 --pcadimensions | -dim | integer | Default 3. The Number of significant PCA dimensions used as covariates for regression analysis.

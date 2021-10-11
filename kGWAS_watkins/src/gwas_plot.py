@@ -8,7 +8,7 @@ myfile = sys.argv[1]
 lengths_file=sys.argv[2]
 out_file = sys.argv[3]
 
-y_l = 6
+y_l = 2
 y_u = 20
 dot_norm = 15
 padding=100000000

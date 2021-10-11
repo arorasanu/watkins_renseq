@@ -8,7 +8,7 @@ import sys
 from Phenotype_GLM import Phenotype
 import pandas as pd
 from sklearn.decomposition import PCA
-import statsmodels.formula.api as smf
+import statsmodels.api as smf
 import numpy as np
 import math
 import time
@@ -202,7 +202,7 @@ class KmerProjection(object):
                     if abs(correlation) > self.cor_threshold:
                         pvalR = self.getGLMpval(split[1], header)
                         if pvalR > self.pval_threshold:
-                            self.associationMatrix[kmerR] = [int(correlation*100),int(pvalF*100)]  
+                            self.associationMatrix[kmerR] = [int(correlation*100),int(pvalR*100)]  
                                         
         gz.close()
     
@@ -256,7 +256,7 @@ class KmerProjection(object):
         for fasta in fasta_sequences:
             name, sequence = fasta.id, str(fasta.seq)
             chrm = name.split(':')[0]
-            start,end = name.split(':')[1].split('_')
+            start,end = name.split(':')[1].split('-')
             h = {}
             for i in range(len(sequence) - self.kmerSize + 1):                
                 kmer = sequence[i:i+self.kmerSize].upper()

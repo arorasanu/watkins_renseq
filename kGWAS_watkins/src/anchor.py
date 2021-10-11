@@ -24,7 +24,7 @@ if __name__ == '__main__':
         for l in f:
             lvals = l.strip().split()
             scaf = lvals[0]
-            map_coord = lvals[2]+':'+lvals[3]+'_'+lvals[4]
+            map_coord = lvals[2]+':'+lvals[3]+'-'+lvals[4]
             mapping_dict[scaf] = map_coord
 
     fasta_sequences = SeqIO.parse(open(args.assembly),'fasta')
