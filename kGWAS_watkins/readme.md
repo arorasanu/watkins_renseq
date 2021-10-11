@@ -64,7 +64,7 @@ python anchor.py -a accession_nlr.fasta -m mapping.txt -o accession_nlr.anchored
 Run the following command for each chunk of the _k_-mer matrix:
 
 ```
-python RunAssociation_GLM.py -i presenceMatrix.txt.gz -hd presenceMatrix_header.txt -a nlr_assembly.fasta -p phenotype.txt -s snp.tsv  -u usable.txt -o output.txt -c 0.1 -pv 2
+python RunAssociation_GLM.py -i presenceMatrix.txt.gz -hd presenceMatrix_header.txt -a nlr_assembly.fasta -p phenotype.txt -s watkins_nlr_kmers.tsv  -u usable.txt -o output.txt -c 0.1 -pv 2
 ```
 
 Put all the resultant outputs in a directory and merge them using the following command:
